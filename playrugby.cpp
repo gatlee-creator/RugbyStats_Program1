@@ -15,6 +15,8 @@ struct RugbyPlayer{
     int yellowCards; 
 };
 
+void readPlayerData(RugbyPlayer players[], fstream& file, int max); 
+
 
 int main()
 {
@@ -28,4 +30,8 @@ int main()
 
 
     return 0;
+}
+
+void readPlayerData(RugbyPlayer players[], fstream& file, int max){
+    
 }
