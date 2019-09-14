@@ -1,5 +1,5 @@
 Jones Hooker 70 0 8.75 0 5
-Jackson Prop 55 87 50 5.49 4
+Jackson Prop 55 87 50.5 5 4
 Graham Flanker 5 30 6.0 50 2
 McCoy Fly_Half 25 10 7.10 25 0
 Smith Hooker 50 2 7.56 0 0
