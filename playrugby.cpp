@@ -18,6 +18,12 @@ struct RugbyPlayer{
 
 int main()
 {
+     //10 rugby players
+    RugbyPlayer players[10]; 
+
+      //input file 
+    ifstream inputFile; 
+    const string nameOfInputFile = "rugby.txt"; 
 
 
 
