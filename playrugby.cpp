@@ -15,7 +15,7 @@ struct RugbyPlayer{
     int yellowCards; 
 };
 
-void readPlayerData(RugbyPlayer players[], int max, string fileName); 
+void readPlayerData(struct RugbyPlayer[], int, string); 
 
 
 int main()
@@ -28,24 +28,28 @@ int main()
 
 
     readPlayerData(players, 10, nameOfInputFile); 
-
-    for(int i = 0; i < 10; i++){
-        cout << players[i].playerName << players[i].position << endl; 
-    }
-        
-
+    
+    // cout << players[3].playerName << players[3].position << endl;
+    // cout << players[8].playerName << players[8].position << endl;
 
     return 0;
 }
 
-void readPlayerData(RugbyPlayer players[], int max, string fileName){
+void readPlayerData(struct RugbyPlayer players[], int max, string fileName){
     ifstream inputFile; 
     inputFile.open(fileName);
+    int incrPlayers = 0; 
 
-    for(int i=0; i < max; i++){
-        inputFile >> players[i].playerName >> players[i].position >> players[i].tries 
-        >> players[i].conversion >> players[i].points >> players[i].games 
-        >> players[i].yellowCards; 
+    for(int i =0; i < max; i++){
+         inputFile >> players[i].playerName
+                   >> players[i].position
+                   >> players[i].tries
+                   >> players[i].conversion
+                   >> players[i].points
+                   >> players[i].games
+                   >> players[i].yellowCards; 
+    
+    cout << players[i].playerName << players[i].position << players[i].tries << players[i].conversion << players[i].points << players[i].games << players[i].yellowCards <<  endl;
     }
-
+    inputFile.close(); 
 }
