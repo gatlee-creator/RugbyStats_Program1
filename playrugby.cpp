@@ -37,15 +37,17 @@ int main()
 
 void printAllData(struct RugbyPlayer players[], int max){
     cout << "Name" << setw(15) 
-         << "Position" << setw(15) 
-         << "Tries" << setw(15) 
-         << "Cov" << setw(15) 
-         << "Pts/Game" << setw(15) 
+         << "Position" << setw(12) 
+         << "Tries" << setw(13) 
+         << "Cov" << setw(20) 
+         << "Pts/Game" << setw(10) 
          << "GS" << setw(15) 
          << "YC" << endl;  
     
+    
     for(int i=0; i < max; i++){
-        cout << players[i].playerName << setw(15) 
+        cout << left << setw(12) 
+             << players[i].playerName << setw(15) 
              << players[i].position << setw(15)
              << players[i].tries << setw(15)  
              << players[i].conversion << setw(15)
