@@ -18,6 +18,7 @@ struct RugbyPlayer{
 
 void readPlayerData(struct RugbyPlayer[], int, string); 
 void printAllData(struct RugbyPlayer[], int);
+void SearchForPlayer(string, struct RugbyPlayer[], int);
 
 int main()
 {
@@ -30,9 +31,25 @@ int main()
 
      //read in data from file
     readPlayerData(players, maxPlayers, nameOfInputFile); 
-    printAllData(players, maxPlayers);
+    //printAllData(players, maxPlayers);
+    SearchForPlayer("Boo", players, maxPlayers);
 
     return 0;
+}
+
+void SearchForPlayer(string searchName, struct RugbyPlayer dataSet[], int size){
+    int indexFound; 
+    bool isFound = false;
+    for(int i = 0; i < size; i++){
+        if(dataSet[i].playerName == searchName){
+            indexFound = i;
+            isFound = true; 
+            cout << "Found! " << indexFound << endl; 
+        }
+    }
+    if(isFound == false)
+        cout << "Player not found...";
+
 }
 
 void printAllData(struct RugbyPlayer players[], int max){
