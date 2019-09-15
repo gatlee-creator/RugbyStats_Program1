@@ -20,7 +20,8 @@ struct RugbyPlayer{
 void readPlayerData(struct RugbyPlayer[], int, string); 
 void printAllData(struct RugbyPlayer[], int);
 void printSingleData(int, struct RugbyPlayer[]); 
-void SearchForPlayerData(string, struct RugbyPlayer[], int);
+void SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
+void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
 
 int main()
 {
@@ -33,10 +34,24 @@ int main()
 
      //read in data from file
     readPlayerData(players, maxPlayers, nameOfInputFile); 
-    //printAllData(players, maxPlayers);
     SearchForPlayerData("Jones", players, maxPlayers);
-
+    printAllData(players, maxPlayers);
     return 0;
+}
+
+void updatePlayerTries(int index, struct RugbyPlayer players[]){
+    string answer;  
+    cout << "Update player's number of tries? [Y/n]" << endl;
+    cin >> answer; 
+    
+    if(answer == "Y"){
+        int newNumber; 
+        cout << "Enter new number: " << endl; 
+        cin >> newNumber; 
+        players[index].tries = newNumber;
+        cout << "Updated." << endl;
+    }
+
 }
 
 void printSingleData(int index, struct RugbyPlayer dataSet[] ){
@@ -56,7 +71,9 @@ void printSingleData(int index, struct RugbyPlayer dataSet[] ){
              << dataSet[index].points << setw(15)
              << dataSet[index].games << setw(15)
              << dataSet[index].yellowCards << endl;   
-    
+
+   //cout << setw(90) << setfill('=') << '=' << endl; //print break ====
+   updatePlayerTries(index, dataSet);  
 }
 
 void SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int size){
