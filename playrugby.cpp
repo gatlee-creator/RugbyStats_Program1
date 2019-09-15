@@ -14,11 +14,13 @@ struct RugbyPlayer{
     float points;
     int games;
     int yellowCards; 
+    //Add a print all function?
 };
 
 void readPlayerData(struct RugbyPlayer[], int, string); 
 void printAllData(struct RugbyPlayer[], int);
-void SearchForPlayer(string, struct RugbyPlayer[], int);
+void printSingleData(int, struct RugbyPlayer[]); 
+void SearchForPlayerData(string, struct RugbyPlayer[], int);
 
 int main()
 {
@@ -32,19 +34,39 @@ int main()
      //read in data from file
     readPlayerData(players, maxPlayers, nameOfInputFile); 
     //printAllData(players, maxPlayers);
-    SearchForPlayer("Boo", players, maxPlayers);
+    SearchForPlayerData("Jones", players, maxPlayers);
 
     return 0;
 }
 
-void SearchForPlayer(string searchName, struct RugbyPlayer dataSet[], int size){
+void printSingleData(int index, struct RugbyPlayer dataSet[] ){
+    cout << "Name" << setw(15) 
+         << "Position" << setw(12) 
+         << "Tries" << setw(13) 
+         << "Cov" << setw(20) 
+         << "Pts/Game" << setw(10) 
+         << "GS" << setw(15) 
+         << "YC" << endl;
+
+    cout << left << setw(12) 
+             << dataSet[index].playerName << setw(15) 
+             << dataSet[index].position << setw(15)
+             << dataSet[index].tries << setw(15)  
+             << dataSet[index].conversion << setw(15)
+             << dataSet[index].points << setw(15)
+             << dataSet[index].games << setw(15)
+             << dataSet[index].yellowCards << endl;   
+    
+}
+
+void SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int size){
     int indexFound; 
     bool isFound = false;
     for(int i = 0; i < size; i++){
         if(dataSet[i].playerName == searchName){
             indexFound = i;
             isFound = true; 
-            cout << "Found! " << indexFound << endl; 
+            printSingleData(indexFound, dataSet); 
         }
     }
     if(isFound == false)
