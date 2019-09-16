@@ -50,6 +50,10 @@ int main()
         case 'B':
             printAllData(players, maxPlayers);
             break; 
+        
+        case 'C':
+            readPlayerData(players, maxPlayers, "rugby.txt");
+            break; 
                 
         default:
             cout << "Not a valid option..." << endl;
@@ -68,7 +72,7 @@ int main()
 
 void updatePlayerTries(int index, struct RugbyPlayer players[]){
     string answer;  
-    cout << "Update player's number of tries? [Y/n]" << endl;
+    cout << "Update player's number of tries? [Y]" << endl;
     cin >> answer; 
     
     if(answer == "Y"){
@@ -156,4 +160,5 @@ void readPlayerData(struct RugbyPlayer players[], int max, string fileName){
     
     }
     inputFile.close(); 
+    cout << "file read." << endl;
 }
