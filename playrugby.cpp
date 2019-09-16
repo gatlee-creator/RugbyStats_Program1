@@ -34,6 +34,7 @@ int main()
     while(true){
         cout << "[A] Search for a player" << endl;
         cout << "[B] View all player stats" << endl;
+        cout << "[C] Upload player data" << endl; 
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
 
@@ -46,6 +47,10 @@ int main()
             SearchForPlayerData(searchName, players, maxPlayers); 
             break;
         
+        case 'B':
+            printAllData(players, maxPlayers);
+            break; 
+                
         default:
             cout << "Not a valid option..." << endl;
         }
