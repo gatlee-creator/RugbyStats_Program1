@@ -86,7 +86,8 @@ void updatePlayerTries(int index, struct RugbyPlayer players[]){
 }
 
 void printSingleData(int index, struct RugbyPlayer dataSet[] ){
-    cout << "Name" << setw(15) 
+    cout << left << setw(12)
+         << "Name" << setw(15) 
          << "Position" << setw(12) 
          << "Tries" << setw(13) 
          << "Cov" << setw(20) 
@@ -123,7 +124,8 @@ void SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int si
 }
 
 void printAllData(struct RugbyPlayer players[], int max){
-    cout << "Name" << setw(15) 
+    cout << left << setw(12)
+         << "Name" << setw(15) 
          << "Position" << setw(12) 
          << "Tries" << setw(13) 
          << "Cov" << setw(20) 
