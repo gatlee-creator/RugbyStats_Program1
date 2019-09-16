@@ -36,9 +36,20 @@ int main()
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
 
-        if((menuChoice != 'A') || (menuChoice !='B'))
-            cout << "Not a valid option..." << endl;
-            continue;
+        // if((menuChoice != 'A') || (menuChoice !='B'))
+        //     cout << "Not a valid option..." << endl;
+        //     continue;
+        
+        switch (menuChoice)
+        {
+        case 'A':
+            string searchName; 
+            cout << "Enter name of player: " << endl;
+            cin >> searchName;
+            SearchForPlayerData(searchName, players, maxPlayers); 
+            break;
+        
+        }
     }
 
       //input filename
