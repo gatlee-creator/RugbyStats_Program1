@@ -29,7 +29,7 @@ int main()
     const int maxPlayers = 10;
     RugbyPlayer players[maxPlayers]; 
     char menuChoice; 
-    string searchName; 
+    string searchName, fileName; 
 
     while(true){
         cout << "[A] Search for a player" << endl;
@@ -52,7 +52,9 @@ int main()
             break; 
         
         case 'C':
-            readPlayerData(players, maxPlayers, "rugby.txt");
+            cout << "Enter name of file: " << endl;
+            cin >> fileName;
+            readPlayerData(players, maxPlayers, fileName);
             break; 
                 
         default:
@@ -142,18 +144,24 @@ void printAllData(struct RugbyPlayer players[], int max){
 void readPlayerData(struct RugbyPlayer players[], int max, string fileName){
     ifstream inputFile; 
     inputFile.open(fileName);
-    int incrPlayers = 0; 
+    if(inputFile){
+        int incrPlayers = 0; 
 
-    for(int i =0; i < max; i++){
-         inputFile >> players[i].playerName
-                   >> players[i].position
-                   >> players[i].tries
-                   >> players[i].conversion
-                   >> players[i].points
-                   >> players[i].games
-                   >> players[i].yellowCards; 
-    
+        for(int i =0; i < max; i++){
+            inputFile >> players[i].playerName
+                    >> players[i].position
+                    >> players[i].tries
+                    >> players[i].conversion
+                    >> players[i].points
+                    >> players[i].games
+                    >> players[i].yellowCards; 
+        
+        }
+        inputFile.close(); 
+        cout << "file read." << endl;
     }
-    inputFile.close(); 
-    cout << "file read." << endl;
+    else{
+        cout << "file not found..." << endl; 
+    }
+    
 }
