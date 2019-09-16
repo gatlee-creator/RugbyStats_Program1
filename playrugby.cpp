@@ -29,6 +29,7 @@ int main()
     const int maxPlayers = 10;
     RugbyPlayer players[maxPlayers]; 
     char menuChoice; 
+    string searchName; 
 
     while(true){
         cout << "[A] Search for a player" << endl;
@@ -36,19 +37,17 @@ int main()
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
 
-        // if((menuChoice != 'A') || (menuChoice !='B'))
-        //     cout << "Not a valid option..." << endl;
-        //     continue;
         
         switch (menuChoice)
         {
         case 'A':
-            string searchName; 
             cout << "Enter name of player: " << endl;
             cin >> searchName;
             SearchForPlayerData(searchName, players, maxPlayers); 
             break;
         
+        default:
+            cout << "Not a valid option..." << endl;
         }
     }
 
@@ -110,7 +109,7 @@ void SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int si
         }
     }
     if(isFound == false)
-        cout << "Player not found...";
+        cout << "Player not found..." << endl;
 
 }
 
