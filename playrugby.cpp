@@ -28,14 +28,22 @@ int main()
      //10 rugby players
     const int maxPlayers = 10;
     RugbyPlayer players[maxPlayers]; 
+    char menuChoice; 
+
+    while(true){
+        cout << "[A] Search for a player" << endl;
+        cout << "[B] View all player stats" << endl;
+        cout << "Please enter a character to select an option:" << endl;
+        cin >> menuChoice;
+    }
 
       //input filename
-    const string nameOfInputFile = "rugby.txt"; 
+    // const string nameOfInputFile = "rugby.txt"; 
 
      //read in data from file
-    readPlayerData(players, maxPlayers, nameOfInputFile); 
-    SearchForPlayerData("Jones", players, maxPlayers);
-    printAllData(players, maxPlayers);
+    // readPlayerData(players, maxPlayers, nameOfInputFile); 
+    // SearchForPlayerData("Jones", players, maxPlayers);
+    // printAllData(players, maxPlayers);
     return 0;
 }
 
