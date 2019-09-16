@@ -60,13 +60,6 @@ int main()
         }
     }
 
-      //input filename
-    // const string nameOfInputFile = "rugby.txt"; 
-
-     //read in data from file
-    // readPlayerData(players, maxPlayers, nameOfInputFile); 
-    // SearchForPlayerData("Jones", players, maxPlayers);
-    // printAllData(players, maxPlayers);
     return 0;
 }
 
