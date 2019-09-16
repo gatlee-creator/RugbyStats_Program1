@@ -35,6 +35,10 @@ int main()
         cout << "[B] View all player stats" << endl;
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
+
+        if((menuChoice != 'A') || (menuChoice !='B'))
+            cout << "Not a valid option..." << endl;
+            continue;
     }
 
       //input filename
