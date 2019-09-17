@@ -36,6 +36,7 @@ int main()
         cout << "[A] Search for a player" << endl;
         cout << "[B] View all player stats" << endl;
         cout << "[C] Upload player data" << endl; 
+        cout << "[D] Sort players by # of Tries" << endl; 
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
 
@@ -59,7 +60,13 @@ int main()
                 break; 
             
             case 'D':
-                sortPlayers(players, maxPlayers);
+                cout << "[H] Highest to lowest " << endl;
+                cout << "[L] Lowest to Highest " << endl;
+                cin >> menuChoice; 
+                if(menuChoice == 'H'){
+                    sortPlayers(players, maxPlayers);
+                }
+                
                 break;
                     
             default:
