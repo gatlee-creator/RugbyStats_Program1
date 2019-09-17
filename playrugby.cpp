@@ -22,6 +22,7 @@ void printAllData(struct RugbyPlayer[], int);
 void printSingleData(int, struct RugbyPlayer[]); 
 void SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
 void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
+void sortPlayers(struct RugbyPlayer[], int); 
 
 int main()
 {
@@ -41,28 +42,48 @@ int main()
         
         switch (menuChoice)
         {
-        case 'A':
-            cout << "Enter name of player: " << endl;
-            cin >> searchName;
-            SearchForPlayerData(searchName, players, maxPlayers); 
-            break;
-        
-        case 'B':
-            printAllData(players, maxPlayers);
-            break; 
-        
-        case 'C':
-            cout << "Enter name of file: " << endl;
-            cin >> fileName;
-            readPlayerData(players, maxPlayers, fileName);
-            break; 
-                
-        default:
-            cout << "Not a valid option..." << endl;
+            case 'A':
+                cout << "Enter name of player: " << endl;
+                cin >> searchName;
+                SearchForPlayerData(searchName, players, maxPlayers); 
+                break;
+            
+            case 'B':
+                printAllData(players, maxPlayers);
+                break; 
+            
+            case 'C':
+                cout << "Enter name of file: " << endl;
+                cin >> fileName;
+                readPlayerData(players, maxPlayers, fileName);
+                break; 
+            
+            case 'D':
+                sortPlayers(players, maxPlayers);
+                break;
+                    
+            default:
+                cout << "Not a valid option..." << endl;
         }
     }
 
     return 0;
+}
+
+void sortPlayers(struct RugbyPlayer players[], int max){
+    int i, j;
+    
+    for(i=0; i < max - 1; i++){
+        for(j=0; j < max - i - 1; j++){
+            if(players[j].tries < players[j + 1].tries){
+                int temp = players[j].tries;
+                players[j].tries = players[j + 1].tries;
+                players[j + 1].tries = temp; 
+            }
+        }
+    }
+    
+    printAllData(players, max);
 }
 
 void updatePlayerTries(int index, struct RugbyPlayer players[]){
