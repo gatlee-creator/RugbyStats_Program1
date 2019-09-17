@@ -23,6 +23,7 @@ void printSingleData(int, struct RugbyPlayer[]);
 void SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
 void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
 void sortPlayers(struct RugbyPlayer[], int, char); 
+void swapData(struct RugbyPlayer[], int); 
 
 int main()
 {
@@ -36,7 +37,7 @@ int main()
         cout << "[A] Search for a player" << endl;
         cout << "[B] View all player stats" << endl;
         cout << "[C] Upload player data" << endl; 
-        cout << "[D] Sort players by # of Tries" << endl; 
+        cout << "[D] Sort players by Tries" << endl; 
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
 
@@ -55,8 +56,8 @@ int main()
             
             case 'C':
                 cout << "Enter name of file: " << endl;
-                cin >> fileName;
-                readPlayerData(players, maxPlayers, fileName);
+                //cin >> fileName;
+                readPlayerData(players, maxPlayers, "rugby.txt");
                 break; 
             
             case 'D':
@@ -76,15 +77,42 @@ int main()
     return 0;
 }
 
+void swapData(struct RugbyPlayer players[], int j){
+    RugbyPlayer temp; 
+      //store in temp struct
+    temp.playerName = players[j].playerName;
+    temp.position = players[j].position;
+    temp.tries = players[j].tries;
+    temp.conversion = players[j].conversion; 
+    temp.points = players[j].points;
+    temp.games = players[j].games;
+    temp.yellowCards = players[j].yellowCards;
+      //now we write 
+    players[j].playerName = players[j + 1].playerName;      
+    players[j].position = players[j + 1].position;
+    players[j].tries = players[j + 1].tries; 
+    players[j].conversion = players[j + 1].conversion; 
+    players[j].points = players[j + 1].points;
+    players[j].games = players[j + 1].games; 
+    players[j].yellowCards = players[j + 1].yellowCards;
+      //transfer the data in temp back
+    players[j + 1].playerName = temp.playerName;
+    players[j + 1].position =  temp.position;
+    players[j + 1].tries = temp.tries;
+    players[j + 1].conversion =  temp.conversion;
+    players[j + 1].points = temp.points;
+    players[j + 1].games = temp.games;
+    players[j + 1].yellowCards = temp.yellowCards; 
+
+}
+
 void sortPlayers(struct RugbyPlayer players[], int max, char sortType){
     int i, j;
     if(sortType == 'H'){
         for(i=0; i < max - 1; i++){
             for(j=0; j < max - i - 1; j++){
                 if(players[j].tries < players[j + 1].tries){
-                    int temp = players[j].tries;
-                    players[j].tries = players[j + 1].tries;
-                    players[j + 1].tries = temp; 
+                    swapData(players, j);
                 }
             }
         }
@@ -93,9 +121,7 @@ void sortPlayers(struct RugbyPlayer players[], int max, char sortType){
         for(i=0; i < max - 1; i++){
             for(j=0; j < max - i - 1; j++){
                 if(players[j].tries > players[j + 1].tries){
-                    int temp = players[j].tries;
-                    players[j].tries = players[j + 1].tries;
-                    players[j + 1].tries = temp; 
+                    swapData(players, j);
                 }
             }
         }
