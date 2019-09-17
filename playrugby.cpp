@@ -22,7 +22,7 @@ void printAllData(struct RugbyPlayer[], int);
 void printSingleData(int, struct RugbyPlayer[]); 
 void SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
 void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
-void sortPlayers(struct RugbyPlayer[], int); 
+void sortPlayers(struct RugbyPlayer[], int, char); 
 
 int main()
 {
@@ -62,10 +62,9 @@ int main()
             case 'D':
                 cout << "[H] Highest to lowest " << endl;
                 cout << "[L] Lowest to Highest " << endl;
+                cout << "Please enter a character to select an option:" << endl;
                 cin >> menuChoice; 
-                if(menuChoice == 'H'){
-                    sortPlayers(players, maxPlayers);
-                }
+                sortPlayers(players, maxPlayers, menuChoice);
                 
                 break;
                     
@@ -77,18 +76,35 @@ int main()
     return 0;
 }
 
-void sortPlayers(struct RugbyPlayer players[], int max){
+void sortPlayers(struct RugbyPlayer players[], int max, char sortType){
     int i, j;
-    
-    for(i=0; i < max - 1; i++){
-        for(j=0; j < max - i - 1; j++){
-            if(players[j].tries < players[j + 1].tries){
-                int temp = players[j].tries;
-                players[j].tries = players[j + 1].tries;
-                players[j + 1].tries = temp; 
+    if(sortType == 'H'){
+        for(i=0; i < max - 1; i++){
+            for(j=0; j < max - i - 1; j++){
+                if(players[j].tries < players[j + 1].tries){
+                    int temp = players[j].tries;
+                    players[j].tries = players[j + 1].tries;
+                    players[j + 1].tries = temp; 
+                }
             }
         }
     }
+    else if(sortType == 'L'){
+        for(i=0; i < max - 1; i++){
+            for(j=0; j < max - i - 1; j++){
+                if(players[j].tries > players[j + 1].tries){
+                    int temp = players[j].tries;
+                    players[j].tries = players[j + 1].tries;
+                    players[j + 1].tries = temp; 
+                }
+            }
+        }
+    }
+    else{
+        cout << "Invalid sorting option..." << endl;
+    }
+    
+    
     
     printAllData(players, max);
 }
