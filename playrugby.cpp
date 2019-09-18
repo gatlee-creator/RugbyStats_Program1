@@ -38,6 +38,7 @@ int main()
         cout << "[B] View all player stats" << endl;
         cout << "[C] Upload player data" << endl; 
         cout << "[D] Sort players by Tries" << endl; 
+        cout << "[E] Update a player Tries" << endl;
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
 
@@ -66,8 +67,10 @@ int main()
                 cout << "Please enter a character to select an option:" << endl;
                 cin >> menuChoice; 
                 sortPlayers(players, maxPlayers, menuChoice);
-                
                 break;
+            
+            case 'E':
+                
                     
             default:
                 cout << "Not a valid option..." << endl;
