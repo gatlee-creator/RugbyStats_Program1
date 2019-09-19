@@ -70,7 +70,13 @@ int main()
                 sortPlayers(players, maxPlayers, menuChoice);
                 break;
             
-                                
+            case 'E':
+                cout << "Enter name of player: " << endl;
+                cin >> searchName; 
+                SearchForPlayerData(searchName, players, maxPlayers); 
+                break;
+
+
             default:
                 cout << "Not a valid option..." << endl;
         }
