@@ -20,7 +20,7 @@ struct RugbyPlayer{
 void readPlayerData(struct RugbyPlayer[], int, string); 
 void printAllData(struct RugbyPlayer[], int);
 void printSingleData(int, struct RugbyPlayer[]); 
-void SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
+int SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
 void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
 void sortPlayers(struct RugbyPlayer[], int, char); 
 void swapData(struct RugbyPlayer[], int); 
@@ -29,6 +29,7 @@ int main()
 {
      //10 rugby players
     const int maxPlayers = 10;
+    int index; 
     RugbyPlayer players[maxPlayers]; 
     char menuChoice; 
     string searchName, fileName; 
@@ -73,7 +74,8 @@ int main()
             case 'E':
                 cout << "Enter name of player: " << endl;
                 cin >> searchName; 
-                SearchForPlayerData(searchName, players, maxPlayers); 
+                index = SearchForPlayerData(searchName, players, maxPlayers); 
+                updatePlayerTries(index, players);
                 break;
 
 
@@ -144,17 +146,11 @@ void sortPlayers(struct RugbyPlayer players[], int max, char sortType){
 }
 
 void updatePlayerTries(int index, struct RugbyPlayer players[]){
-    string answer;  
-    cout << "Update player's number of tries? [Y]" << endl;
-    cin >> answer; 
-    
-    if(answer == "Y"){
-        int newNumber; 
-        cout << "Enter new number: " << endl; 
-        cin >> newNumber; 
-        players[index].tries = newNumber;
-        cout << "Updated." << endl;
-    }
+    int newNumber;
+    cout << "Enter new number of tries:" << endl;
+    cin >> newNumber; 
+    players[index].tries = newNumber;
+    cout << "Updated." << endl;
 
 }
 
@@ -178,10 +174,10 @@ void printSingleData(int index, struct RugbyPlayer dataSet[] ){
              << dataSet[index].yellowCards << endl;   
 
    //cout << setw(90) << setfill('=') << '=' << endl; //print break ====
-   updatePlayerTries(index, dataSet);  
+   // updatePlayerTries(index, dataSet);  
 }
 
-void SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int size){
+int SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int size){
     int indexFound; 
     bool isFound = false;
     for(int i = 0; i < size; i++){
@@ -189,11 +185,13 @@ void SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int si
             indexFound = i;
             isFound = true; 
             printSingleData(indexFound, dataSet); 
+            return indexFound;
         }
     }
     if(isFound == false)
         cout << "Player not found..." << endl;
 
+    return -1; 
 }
 
 void printAllData(struct RugbyPlayer players[], int max){
