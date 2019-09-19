@@ -50,7 +50,8 @@ int main()
             case 'A':
                 cout << "Enter name of player: " << endl;
                 cin >> searchName;
-                SearchForPlayerData(searchName, players, maxPlayers); 
+                index = SearchForPlayerData(searchName, players, maxPlayers); 
+                printSingleData(index, players);
                 break;
             
             case 'B':
@@ -76,6 +77,7 @@ int main()
                 cin >> searchName; 
                 index = SearchForPlayerData(searchName, players, maxPlayers); 
                 updatePlayerTries(index, players);
+                printSingleData(index, players);
                 break;
 
 
@@ -184,7 +186,6 @@ int SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int siz
         if(dataSet[i].playerName == searchName){
             indexFound = i;
             isFound = true; 
-            printSingleData(indexFound, dataSet); 
             return indexFound;
         }
     }
