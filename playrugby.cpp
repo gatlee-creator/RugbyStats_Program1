@@ -24,6 +24,7 @@ int SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowerc
 void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
 void sortPlayers(struct RugbyPlayer[], int, char); 
 void swapData(struct RugbyPlayer[], int); 
+void saveDataToFile(struct RugbyPlayer[], int, string); 
 
 int main()
 {
@@ -101,6 +102,10 @@ int main()
     }
 
     return 0;
+}
+
+void saveDataToFile(struct RugbyPlayer[], int, string){
+    
 }
 
 void swapData(struct RugbyPlayer players[], int j){
