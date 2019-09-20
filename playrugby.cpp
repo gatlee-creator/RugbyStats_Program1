@@ -79,6 +79,20 @@ int main()
                 updatePlayerTries(index, players);
                 printSingleData(index, players);
                 break;
+            
+            case 'F':
+                cout << "Save data to a file? Enter Y or press any key to quit: " << endl;
+                cin >> menuChoice; 
+
+                if(menuChoice == 'Y'){
+                    //code to save to file
+                    //then exit program 
+                }
+                else{
+                    //exit program 
+                    exit(0); 
+                }
+                
 
 
             default:
