@@ -87,7 +87,11 @@ int main()
 
                 if(menuChoice == 'Y'){
                     //code to save to file
+                    cout << "Save file as: " << endl; 
+                    cin >> fileName;
+                    saveDataToFile(players, maxPlayers, fileName);
                     //then exit program 
+                    exit(0); 
                 }
                 else{
                     //exit program 
@@ -104,8 +108,32 @@ int main()
     return 0;
 }
 
-void saveDataToFile(struct RugbyPlayer[], int, string){
-    
+void saveDataToFile(struct RugbyPlayer dataSet[], int max, string fileName){
+    ofstream outputFile; 
+    outputFile.open(fileName);
+
+    outputFile << left << setw(12)
+         << "Name" << setw(15) 
+         << "Position" << setw(12) 
+         << "Tries" << setw(13) 
+         << "Cov" << setw(20) 
+         << "Pts/Game" << setw(10) 
+         << "GS" << setw(15) 
+         << "YC" << endl;
+
+    for(int i= 0; i < max; i++){
+        outputFile << left << setw(12) 
+                << dataSet[i].playerName << setw(15) 
+                << dataSet[i].position << setw(15)
+                << dataSet[i].tries << setw(15)  
+                << dataSet[i].conversion << setw(15)
+                << dataSet[i].points << setw(15)
+                << dataSet[i].games << setw(15)
+                << dataSet[i].yellowCards << endl;   
+
+    }
+    outputFile.close(); 
+    cout << "File saved." << endl; 
 }
 
 void swapData(struct RugbyPlayer players[], int j){
