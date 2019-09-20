@@ -114,10 +114,10 @@ void saveDataToFile(struct RugbyPlayer dataSet[], int max, string fileName){
 
     outputFile << left << setw(12)
          << "Name" << setw(15) 
-         << "Position" << setw(12) 
-         << "Tries" << setw(13) 
-         << "Cov" << setw(20) 
-         << "Pts/Game" << setw(10) 
+         << "Position" << setw(15) 
+         << "Tries" << setw(15) 
+         << "Cov" << setw(15) 
+         << "Pts/Game" << setw(15) 
          << "GS" << setw(15) 
          << "YC" << endl;
 
@@ -206,10 +206,10 @@ void updatePlayerTries(int index, struct RugbyPlayer players[]){
 void printSingleData(int index, struct RugbyPlayer dataSet[] ){
     cout << left << setw(12)
          << "Name" << setw(15) 
-         << "Position" << setw(12) 
-         << "Tries" << setw(13) 
-         << "Cov" << setw(20) 
-         << "Pts/Game" << setw(10) 
+         << "Position" << setw(15) 
+         << "Tries" << setw(15) 
+         << "Cov" << setw(15) 
+         << "Pts/Game" << setw(15) 
          << "GS" << setw(15) 
          << "YC" << endl;
 
@@ -245,10 +245,10 @@ int SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int siz
 void printAllData(struct RugbyPlayer players[], int max){
     cout << left << setw(12)
          << "Name" << setw(15) 
-         << "Position" << setw(12) 
-         << "Tries" << setw(13) 
-         << "Cov" << setw(20) 
-         << "Pts/Game" << setw(10) 
+         << "Position" << setw(15) 
+         << "Tries" << setw(15) 
+         << "Cov" << setw(15) 
+         << "Pts/Game" << setw(15) 
          << "GS" << setw(15) 
          << "YC" << endl;  
     
