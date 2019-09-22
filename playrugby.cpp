@@ -36,9 +36,9 @@ int main()
     string searchName, fileName; 
 
     while(true){
-        cout << "[A] Search for a player" << endl;
-        cout << "[B] View all player stats" << endl;
-        cout << "[C] Upload player data" << endl; 
+        cout << "[A] Upload player data" << endl;
+        cout << "[B] Search for a player" << endl;
+        cout << "[C] Display all player data" << endl; 
         cout << "[D] Sort players by Tries" << endl; 
         cout << "[E] Update a player Tries" << endl;
         cout << "[F] Quit" << endl; 
@@ -49,20 +49,21 @@ int main()
         switch (menuChoice)
         {
             case 'A':
+                cout << "Enter name of file: " << endl;
+                //cin >> fileName;
+                readPlayerData(players, maxPlayers, "rugby.txt");
+                
+                break;
+            
+            case 'B':
                 cout << "Enter name of player: " << endl;
                 cin >> searchName;
                 index = SearchForPlayerData(searchName, players, maxPlayers); 
                 printSingleData(index, players);
-                break;
-            
-            case 'B':
-                printAllData(players, maxPlayers);
                 break; 
             
             case 'C':
-                cout << "Enter name of file: " << endl;
-                //cin >> fileName;
-                readPlayerData(players, maxPlayers, "rugby.txt");
+                printAllData(players, maxPlayers);
                 break; 
             
             case 'D':
