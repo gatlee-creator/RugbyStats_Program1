@@ -19,8 +19,8 @@ struct RugbyPlayer{
 void readPlayerData(struct RugbyPlayer[], int, string); 
 void printAllData(struct RugbyPlayer[], int);
 void printSingleData(int, struct RugbyPlayer[]); 
-int searchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
-void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
+int searchForPlayerData(string, struct RugbyPlayer[], int); 
+void updatePlayerTries(int, struct RugbyPlayer[]); 
 void sortPlayers(struct RugbyPlayer[], int, char); 
 void swapData(struct RugbyPlayer[], int); 
 void saveDataToFile(struct RugbyPlayer[], int, string); 
@@ -36,13 +36,15 @@ int main()
     string searchName, fileName; 
 
     while(true){
-        printSeperator(25);
+        cout << "RUGBY TEAM MANAGER" << endl;
+        printSeperator(30);
         cout << "[A] Upload player data" << endl;
         cout << "[B] Search for a player" << endl;
         cout << "[C] Display all player data" << endl; 
         cout << "[D] Sort players by Tries" << endl; 
         cout << "[E] Update a player Tries" << endl;
         cout << "[F] Quit" << endl; 
+        printSeperator(30);
         cout << "Please enter a character to select an option:" << endl;
         cin >> menuChoice;
 
@@ -53,7 +55,6 @@ int main()
                 cout << "Enter name of file: " << endl;
                 //cin >> fileName;
                 readPlayerData(players, maxPlayers, "rugby.txt");
-                
                 break;
             
             case 'B':
@@ -104,6 +105,7 @@ int main()
 
             default:
                 cout << "Not a valid option..." << endl;
+                cout << endl; 
         }
     }
 
@@ -136,6 +138,7 @@ void saveDataToFile(struct RugbyPlayer dataSet[], int max, string fileName){
     }
     outputFile.close(); 
     cout << "File saved." << endl; 
+    cout << endl;
 }
 
 void swapData(struct RugbyPlayer players[], int j){
@@ -224,8 +227,7 @@ void printSingleData(int index, struct RugbyPlayer dataSet[] ){
              << dataSet[index].games << setw(15)
              << dataSet[index].yellowCards << endl;   
 
-   //cout << setw(90) << setfill('=') << '=' << endl; //print break ====
-   // updatePlayerTries(index, dataSet);  
+    cout << endl;     
 }
 
 int searchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int size){
@@ -265,6 +267,7 @@ void printAllData(struct RugbyPlayer players[], int max){
              << players[i].games << setw(15)
              << players[i].yellowCards << endl; 
     }
+    cout << endl;
 }
 
 void readPlayerData(struct RugbyPlayer players[], int max, string fileName){
@@ -285,9 +288,11 @@ void readPlayerData(struct RugbyPlayer players[], int max, string fileName){
         }
         inputFile.close(); 
         cout << "file read." << endl;
+        cout << endl;
     }
     else{
         cout << "file not found..." << endl; 
+        cout << endl;
     }
     
 }
