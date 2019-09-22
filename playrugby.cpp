@@ -14,13 +14,12 @@ struct RugbyPlayer{
     float points;
     int games;
     int yellowCards; 
-    //Add a print all function?
 };
 
 void readPlayerData(struct RugbyPlayer[], int, string); 
 void printAllData(struct RugbyPlayer[], int);
 void printSingleData(int, struct RugbyPlayer[]); 
-int SearchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
+int searchForPlayerData(string, struct RugbyPlayer[], int); //change S to lowercase
 void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later 
 void sortPlayers(struct RugbyPlayer[], int, char); 
 void swapData(struct RugbyPlayer[], int); 
@@ -58,7 +57,7 @@ int main()
             case 'B':
                 cout << "Enter name of player: " << endl;
                 cin >> searchName;
-                index = SearchForPlayerData(searchName, players, maxPlayers); 
+                index = searchForPlayerData(searchName, players, maxPlayers); 
                 printSingleData(index, players);
                 break; 
             
@@ -77,7 +76,7 @@ int main()
             case 'E':
                 cout << "Enter name of player: " << endl;
                 cin >> searchName; 
-                index = SearchForPlayerData(searchName, players, maxPlayers); 
+                index = searchForPlayerData(searchName, players, maxPlayers); 
                 updatePlayerTries(index, players);
                 printSingleData(index, players);
                 break;
@@ -227,7 +226,7 @@ void printSingleData(int index, struct RugbyPlayer dataSet[] ){
    // updatePlayerTries(index, dataSet);  
 }
 
-int SearchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int size){
+int searchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int size){
     int indexFound; 
     bool isFound = false;
     for(int i = 0; i < size; i++){
