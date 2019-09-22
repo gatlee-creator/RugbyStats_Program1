@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//define the data structure 
+//define the data structure for a rugby player
 struct RugbyPlayer{
     string playerName;
     string position; 
@@ -24,6 +24,7 @@ void updatePlayerTries(int, struct RugbyPlayer[]); //we can overload this later
 void sortPlayers(struct RugbyPlayer[], int, char); 
 void swapData(struct RugbyPlayer[], int); 
 void saveDataToFile(struct RugbyPlayer[], int, string); 
+void printSeperator(int);
 
 int main()
 {
@@ -35,6 +36,7 @@ int main()
     string searchName, fileName; 
 
     while(true){
+        printSeperator(25);
         cout << "[A] Upload player data" << endl;
         cout << "[B] Search for a player" << endl;
         cout << "[C] Display all player data" << endl; 
@@ -288,4 +290,10 @@ void readPlayerData(struct RugbyPlayer players[], int max, string fileName){
         cout << "file not found..." << endl; 
     }
     
+}
+
+void printSeperator(int length){
+    for(int i = 0; i < length; i++)
+        cout << '=';
+    cout << endl; 
 }
