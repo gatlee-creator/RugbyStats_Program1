@@ -25,6 +25,7 @@ void sortPlayers(struct RugbyPlayer[], int, char);
 void swapData(struct RugbyPlayer[], int); 
 void saveDataToFile(struct RugbyPlayer[], int, string); 
 void printSeperator(int);
+void printTableHeading(); 
 
 int main()
 {
@@ -85,7 +86,7 @@ int main()
                 break;
             
             case 'F':
-                cout << "Save data to a file? Enter Y or press any key to quit: " << endl;
+                cout << "Save data to a file? Enter Y to save or press any key to quit: " << endl;
                 cin >> menuChoice; 
 
                 if(menuChoice == 'Y'){
@@ -192,10 +193,10 @@ void sortPlayers(struct RugbyPlayer players[], int max, char sortType){
     }
     else{
         cout << "Invalid sorting option..." << endl;
+        cout << endl;
     }
     
-    
-    
+
     printAllData(players, max);
 }
 
@@ -205,18 +206,13 @@ void updatePlayerTries(int index, struct RugbyPlayer players[]){
     cin >> newNumber; 
     players[index].tries = newNumber;
     cout << "Updated." << endl;
+    cout << endl;
 
 }
 
 void printSingleData(int index, struct RugbyPlayer dataSet[] ){
-    cout << left << setw(12)
-         << "Name" << setw(15) 
-         << "Position" << setw(15) 
-         << "Tries" << setw(15) 
-         << "Cov" << setw(15) 
-         << "Pts/Game" << setw(15) 
-         << "GS" << setw(15) 
-         << "YC" << endl;
+    
+    printTableHeading(); 
 
     cout << left << setw(12) 
              << dataSet[index].playerName << setw(15) 
@@ -247,15 +243,8 @@ int searchForPlayerData(string searchName, struct RugbyPlayer dataSet[], int siz
 }
 
 void printAllData(struct RugbyPlayer players[], int max){
-    cout << left << setw(12)
-         << "Name" << setw(15) 
-         << "Position" << setw(15) 
-         << "Tries" << setw(15) 
-         << "Cov" << setw(15) 
-         << "Pts/Game" << setw(15) 
-         << "GS" << setw(15) 
-         << "YC" << endl;  
-    
+
+    printTableHeading();   
     
     for(int i=0; i < max; i++){
         cout << left << setw(12) 
@@ -295,6 +284,18 @@ void readPlayerData(struct RugbyPlayer players[], int max, string fileName){
         cout << endl;
     }
     
+}
+
+//overload this 
+void printTableHeading(){
+    cout << left << setw(12)
+         << "Name" << setw(15) 
+         << "Position" << setw(15) 
+         << "Tries" << setw(15) 
+         << "Cov" << setw(15) 
+         << "Pts/Game" << setw(15) 
+         << "GS" << setw(15) 
+         << "YC" << endl;
 }
 
 void printSeperator(int length){
